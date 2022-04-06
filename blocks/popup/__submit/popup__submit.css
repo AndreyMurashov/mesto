@@ -1,0 +1,15 @@
+.popup__submit {
+    display: block;
+    width: 358px;
+    height: 50px;
+    border-radius: 2px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    margin: 48px auto 37px auto;
+}
+
+.popup__submit:hover {
+    opacity: .8;
+}
