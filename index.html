@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="pages/index.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MESTO</title>
+</head>
+<body class="body">
+    <header class="header">
+        <div class="header__logo"></div>
+    </header>
+    <main class="main">
+    <section class="profile">
+        <img class="profile__avatar" src="images/avatar.jpg" alt="Фото профиля">
+        <div class="profile__info">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <p class="profile__status">Исследователь океана</p>
+            <button class="profile__edit"></button>
+        </div>
+        <button class="profile__add"></button>
+    </section>
+<section class="elements">
+    <div class="element">
+        <img class="element__image" src="images/kirill-pershin-1088404-unsplash-min.jpg" alt="Карачаевск">
+        <div class="element__title">
+            <p class="element__name">Карачаевск</p>
+            <button class="element__like"></button>
+        </div>
+    </div>
+    <div class="element">
+        <img class="element__image" src="images/kirill-pershin-1404681-unsplash-min.jpg" alt="Гора Эльбрус">
+        <div class="element__title">
+            <p class="element__name">Гора Эльбрус</p>
+            <button class="element__like"></button>
+        </div>
+    </div>
+    <div class="element">
+        <img class="element__image" src="images/kirill-pershin-1556355-unsplash-min.jpg" alt="Домбай">
+        <div class="element__title">
+            <p class="element__name">Домбай</p>
+            <button class="element__like"></button>
+        </div>
+    </div>
+    <div class="element">
+        <img class="element__image" src="images/kirill-pershin-1404681-unsplash-min.jpg" alt="Гора Эльбрус">
+        <div class="element__title">
+            <p class="element__name">Гора Эльбрус</p>
+            <button class="element__like"></button>
+        </div>
+    </div>
+    <div class="element">
+        <img class="element__image" src="images/kirill-pershin-1556355-unsplash-min.jpg" alt="Домбай">
+        <div class="element__title">
+            <p class="element__name">Домбай</p>
+            <button class="element__like"></button>
+        </div>
+    </div>
+    <div class="element">
+        <img class="element__image" src="images/kirill-pershin-1088404-unsplash-min.jpg" alt="Карачаево-Черкессия">
+        <div class="element__title">
+            <p class="element__name">Карачаево-Черкессия</p>
+            <button class="element__like"></button>
+        </div>
+    </div>
+
+</section>
+    </main>
+    <footer class="footer">
+        <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
+    </footer>
+    <div class="popup">
+        <div class="popup__container">
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <form class="form" action="#">
+            <input type="text" class="popup__input" value="">
+            <input type="text" class="popup__input" value="">
+            <input type="submit" class="popup__submit" value="Сохранить">
+            </form>
+            <input type="button" class="popup__close">
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
