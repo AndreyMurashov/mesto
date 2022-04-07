@@ -6,3 +6,18 @@
     padding-top: 45px;
     box-sizing: border-box;
 }
+
+@media screen and (max-width: 1023px) {
+    .header {
+        max-width: 90%;
+}
+}
+
+@media screen and (max-width: 425px) {
+    .header {
+        max-width: 320px;
+        min-height: 84px;
+        padding-top: 28px;
+        padding-left: 27px;
+}
+}

@@ -6,3 +6,10 @@
     background-size: cover;
     background-position: center;
 }
+
+@media screen and (max-width: 767px) {
+    .footer__copyright {
+        width: 16px;
+        height: 16px;
+}
+}

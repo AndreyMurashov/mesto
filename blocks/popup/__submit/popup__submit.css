@@ -6,10 +6,23 @@
     background-color: black;
     color: white;
     text-align: center;
-    vertical-align: middle;
     margin: 48px auto 37px auto;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.22;
 }
 
 .popup__submit:hover {
     opacity: .8;
+}
+
+@media screen and (max-width: 450px) {
+    .popup__submit {
+        width: 238px;
+        height: 46px;
+        margin: 45px auto 25px auto;
+        font-size: 14px;
+        line-height: 1.21px;
+}
 }
