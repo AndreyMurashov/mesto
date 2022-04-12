@@ -2,7 +2,7 @@
     width: 24px;
     height: 24px;
     padding: 0;
-    background-image: url(../../../images/pen.png);
+    background-image: url(../../../images/pen.svg);
     background-color: black;
     background-size: 10px 10px;
     background-position: center;
@@ -13,18 +13,19 @@
     position: absolute;
     top: 15px;
     right: -40px;
+    transition: opacity .5s;
 }
 
 .profile__edit:hover {
     opacity: .6;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 767px) {
     .profile__edit {
         width: 18px;
         height: 18px;
         margin: 0;
         top: 35px;
         right: -30px;
-}
+    }
 }

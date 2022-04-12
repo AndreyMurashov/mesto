@@ -4,7 +4,7 @@
     background-color: white;
     border: none;
     color: #FFFFFF;
-    width: 22px;
+    min-width: 22px;
     height: 19px;
     align-self: center;
 }

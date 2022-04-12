@@ -15,7 +15,7 @@
         grid-template-rows: repeat(3, max-content);
         margin-top: 40px;
         justify-items: stretch;
-}
+    }
 }
 
 @media screen and (max-width: 767px) {
@@ -25,5 +25,5 @@
         grid-template-rows: repeat(6, max-content);
         margin-top: 36px;
         justify-items: center;
-}
+    }
 }
