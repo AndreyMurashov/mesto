@@ -4,6 +4,7 @@
     margin-top: 40px;
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 @media screen and (max-width: 1023px) {
