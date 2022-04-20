@@ -23,60 +23,31 @@
             </div>
             <button type="button" class="profile__add"  aria-label="button-add"></button>
         </section>
-        <section class="elements">
-            <div class="element">
-                <img class="element__image" src="images/kirill-pershin-1088404-unsplash-min.jpg" alt="Карачаевск">
-                <div class="element__title">
-                    <h2 class="element__name">Карачаевск</h2>
-                    <button type="button" class="element__like" aria-label="button-like"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__image" src="images/kirill-pershin-1404681-unsplash-min.jpg" alt="Гора Эльбрус">
-                <div class="element__title">
-                    <h2 class="element__name">Гора Эльбрус</h2>
-                    <button type="button" class="element__like" aria-label="button-like"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__image" src="images/kirill-pershin-1556355-unsplash-min.jpg" alt="Домбай">
-                <div class="element__title">
-                    <h2 class="element__name">Домбай</h2>
-                    <button type="button" class="element__like" aria-label="button-like"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__image" src="images/kirill-pershin-1404681-unsplash-min.jpg" alt="Гора Эльбрус">
-                <div class="element__title">
-                    <h2 class="element__name">Гора Эльбрус</h2>
-                    <button type="button" class="element__like" aria-label="button-like"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__image" src="images/kirill-pershin-1556355-unsplash-min.jpg" alt="Домбай">
-                <div class="element__title">
-                    <h2 class="element__name">Домбай</h2>
-                    <button type="button" class="element__like" aria-label="button-like"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__image" src="images/kirill-pershin-1088404-unsplash-min.jpg"
-                    alt="Карачаево-Черкессия">
-                <div class="element__title">
-                    <h2 class="element__name">Карачаево-Черкессия</h2>
-                    <button type="button" class="element__like" aria-label="button-like"></button>
-                </div>
-            </div>
-        </section>
+         <section class="elements">
+           
+        </section> 
     </main>
+
+    <template id="element">
+        <div class="element">
+            <img class="element__image" src="" alt="">
+            <div class="element__title">
+                <h2 class="element__name"></h2>
+                <button type="button" class="element__like" aria-label="button-like"></button>
+            </div>
+        </div>
+    </template>
+
     <footer class="footer">
         <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
-    <div class="popup">
+
+
+    <div id="popup__profile" class="popup">
         <div class="popup__container">
-            <h2 class="popup__title">Редактировать профиль</h2>
+            <h2 class="popup__title">Редактирование профиля</h2>
             <form name="profile-edit" class="form" action="#">
-                <input name="prifile-name" type="text" class="popup__input" id="name" value="" placeholder="Введите имя"
+                <input name="profile-name" type="text" class="popup__input" id="name" value="" placeholder="Введите имя"
                     required>
                 <input name="profile-status" type="text" class="popup__input" id="status" value=""
                     placeholder="Введите информацию о себе" required>
@@ -85,6 +56,20 @@
             <button type="button" class="popup__close" aria-label="Close"></button>
         </div>
     </div>
+
+    <!-- <div id="popup__photo" class="popup__photo">
+        <div class="popup__container">
+            <h2 class="popup__title">Новое место</h2>
+            <form name="photo-add" class="form" action="#">
+                <input name="photo-name" type="text" class="popup__input" id="name" value="" placeholder="Название"
+                    required>
+                <input name="photo-link" type="text" class="popup__input" id="status" value=""
+                    placeholder="Ссылка на картинку" required>
+                <input type="submit" class="popup__submit" value="Сохранить">
+            </form>
+            <button type="button" class="popup__close" aria-label="Close"></button>
+        </div>
+    </div> -->
     <script src="js/index.js"></script>
 </body>
 
