@@ -46,7 +46,7 @@
     <div id="popup__profile" class="popup">
         <div class="popup__container">
             <h2 class="popup__title">Редактирование профиля</h2>
-            <form name="profile-edit" class="form" action="#">
+            <form name="profile-edit" class="popup__form" action="#">
                 <input name="profile-name" type="text" class="popup__input" id="name" value="" placeholder="Введите имя"
                     required>
                 <input name="profile-status" type="text" class="popup__input" id="status" value=""
@@ -57,19 +57,19 @@
         </div>
     </div>
 
-    <!-- <div id="popup__photo" class="popup__photo">
-        <div class="popup__container">
-            <h2 class="popup__title">Новое место</h2>
-            <form name="photo-add" class="form" action="#">
-                <input name="photo-name" type="text" class="popup__input" id="name" value="" placeholder="Название"
+    <div id="popup__photo" class="popup-add-photo">
+        <div class="popup-add-photo__container">
+            <h2 class="popup-add-photo__title">Новое место</h2>
+            <form name="photo-add" class="popup-add-photo__form" action="#">
+                <input name="photo-name" type="text" class="popup-add-photo__input" id="photo-name" value="" placeholder="Название"
                     required>
-                <input name="photo-link" type="text" class="popup__input" id="status" value=""
+                <input name="photo-link" type="text" class="popup-add-photo__input" id="photo-link" value=""
                     placeholder="Ссылка на картинку" required>
-                <input type="submit" class="popup__submit" value="Сохранить">
+                <input type="submit" class="popup-add-photo__submit" value="Сохранить">
             </form>
-            <button type="button" class="popup__close" aria-label="Close"></button>
+            <button type="button" class="popup-add-photo__close" aria-label="Close"></button>
         </div>
-    </div> -->
+    </div> 
     <script src="js/index.js"></script>
 </body>
 
