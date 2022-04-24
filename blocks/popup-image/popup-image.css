@@ -1,4 +1,4 @@
-.popup {
+.popup-image {
     background-color: rgba(0, 0, 0, 0.5);
     position: fixed;
     width: 100vw;
@@ -9,6 +9,6 @@
     justify-content: center;
     align-items: center;
     opacity: 0;
-    transition: all 1s;
+    transition: opacity .7s;
     z-index: -1;
 }
