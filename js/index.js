@@ -29,22 +29,22 @@ const card = document.querySelector('#element').content.querySelector('.element'
 
 const popup = document.querySelector('.popup');
 const body = document.querySelector('.body');
-let btnProfileEdit = document.querySelector('.profile__edit');
-let btnPopupClose = document.querySelector('.popup__close');
-let profileName = document.querySelector('.profile__name');
-let profileStatus = document.querySelector('.profile__status');
-let popupDataName = document.querySelector('#popup__name');
-let popupDataStatus = document.querySelector('#popup__status');
-let formData = document.querySelector('.popup__form');
+const btnProfileEdit = document.querySelector('.profile__edit');
+const btnPopupClose = document.querySelector('.popup__close');
+const profileName = document.querySelector('.profile__name');
+const profileStatus = document.querySelector('.profile__status');
+const popupDataName = document.querySelector('#popup__name');
+const popupDataStatus = document.querySelector('#popup__status');
+const formData = document.querySelector('.popup__form');
 
-let btnAddPhoto = document.querySelector('.profile__add');
-let popupAddPhoto = document.querySelector('.popup-add-photo');
-let btnPopupAddPhotoClose = document.querySelector('.popup-add-photo__close');
-let addPhotoName = document.querySelector('.profile-add-photo__name');
-let addPhotoLink = document.querySelector('.profile-add-photo__status');
-let popupAddPhotoName = document.querySelector('#photo-name');
-let popupAddPhotoLink = document.querySelector('#photo-link');
-let formDataAddPhoto = document.querySelector('.popup-add-photo__form');
+const btnAddPhoto = document.querySelector('.profile__add');
+const popupAddPhoto = document.querySelector('.popup-add-photo');
+const btnPopupAddPhotoClose = document.querySelector('.popup-add-photo__close');
+const addPhotoName = document.querySelector('.profile-add-photo__name');
+const addPhotoLink = document.querySelector('.profile-add-photo__status');
+const popupAddPhotoName = document.querySelector('#photo-name');
+const popupAddPhotoLink = document.querySelector('#photo-link');
+const formDataAddPhoto = document.querySelector('.popup-add-photo__form');
 
 const cardContainer = document.querySelector('.elements');
 
