@@ -31,6 +31,7 @@
     <template id="element">
         <div class="element">
             <img class="element__image" src="" alt="">
+            <button type="button" class="element__thrash" aria-label="button-thrash"></button>
             <div class="element__title">
                 <h2 class="element__name"></h2>
                 <button type="button" class="element__like" aria-label="button-like"></button>
@@ -43,13 +44,13 @@
     </footer>
 
 
-    <div id="popup__profile" class="popup">
+    <div id="popup" class="popup">
         <div class="popup__container">
             <h2 class="popup__title">Редактирование профиля</h2>
             <form name="profile-edit" class="popup__form" action="#">
-                <input name="profile-name" type="text" class="popup__input" id="name" value="" placeholder="Введите имя"
+                <input name="profile-name" type="text" class="popup__input" id="popup__name" value="" placeholder="Введите имя"
                     required>
-                <input name="profile-status" type="text" class="popup__input" id="status" value=""
+                <input name="profile-status" type="text" class="popup__input" id="popup__status" value=""
                     placeholder="Введите информацию о себе" required>
                 <input type="submit" class="popup__submit" value="Сохранить">
             </form>

@@ -33,8 +33,8 @@
 @import url(../blocks/popup-add-photo/__submit/popup-add-photo__submit.css);
 @import url(../blocks/popup-add-photo/__title/popup-add-photo__title.css);
 @import url(../blocks/popup-add-photo/_opened/popup-add-photo_opened.css);
-@import url();
-@import url();
+@import url(../blocks/element/__thrash/element__thrash.css);
+@import url(../blocks/element/__like/_liked/element__like_liked.css);
 @import url();
 @import url();
 @import url();

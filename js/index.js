@@ -1,85 +1,42 @@
-let popup = document.querySelector('.popup');
+const initialCards = [
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+];
+
+const card = document.querySelector('#element').content.querySelector('.element');
+
+
+const popup = document.querySelector('.popup');
+const body = document.querySelector('.body');
 let btnProfileEdit = document.querySelector('.profile__edit');
 let btnPopupClose = document.querySelector('.popup__close');
 let profileName = document.querySelector('.profile__name');
 let profileStatus = document.querySelector('.profile__status');
-let popupDataName = document.querySelector('#name');
-let popupDataStatus = document.querySelector('#status');
+let popupDataName = document.querySelector('#popup__name');
+let popupDataStatus = document.querySelector('#popup__status');
 let formData = document.querySelector('.popup__form');
-
-function popupOpen() {
-    popup.classList.add('popup_opened');
-    popupDataName.value = profileName.textContent;
-    popupDataStatus.value = profileStatus.textContent;
-}
-
-function popupClose() {
-    popup.classList.remove('popup_opened');
-}
-
-function formSubmitHandler(evt) {
-    evt.preventDefault();
-    profileName.textContent = popupDataName.value;
-    profileStatus.textContent = popupDataStatus.value;
-    popupClose();
-}
-
-
-btnProfileEdit.addEventListener('click', popupOpen);
-btnPopupClose.addEventListener('click', popupClose)
-formData.addEventListener('submit', formSubmitHandler);
-
-
-
-// 5 спринт
-
-
-const initialCards = [
-    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    },
-  ];
-
-
-const elementTemplate = document.querySelector('#element').content;
-let elementsOnline = document.querySelector('.elements');
-
-function galeryCreate() {
-for(let i = 0; i < initialCards.length; i++){
-const userElement = elementTemplate.querySelector('.element').cloneNode(true);
-
-userElement.querySelector('.element__image').src = initialCards[i].link;
-userElement.querySelector('.element__name').textContent = initialCards[i].name;
-
-
-elementsOnline.append(userElement);
-};
-}
-galeryCreate();
-
-///////////////////////////////////////////////////////////////////////
-
 
 let btnAddPhoto = document.querySelector('.profile__add');
 let popupAddPhoto = document.querySelector('.popup-add-photo');
@@ -90,26 +47,83 @@ let popupAddPhotoName = document.querySelector('#photo-name');
 let popupAddPhotoLink = document.querySelector('#photo-link');
 let formDataAddPhoto = document.querySelector('.popup-add-photo__form');
 
+const cardContainer = document.querySelector('.elements');
+
+function popupOpen() {
+    popup.classList.add('popup_opened');
+    popupDataName.value = profileName.textContent;
+    popupDataStatus.value = profileStatus.textContent;
+};
+
+function popupClose() {
+    popup.classList.remove('popup_opened');
+};
+
+function formSubmitHandler(evt) {
+    evt.preventDefault();
+    profileName.textContent = popupDataName.value;
+    profileStatus.textContent = popupDataStatus.value;
+    popupClose();
+};
+
 function popupAddPhotoOpen() {
-    popupAddPhoto.classList.add('popup-add-photo_opened');
-}
+  popupAddPhoto.classList.add('popup-add-photo_opened');
+};
 
 function popupAddPhotoClose() {
-    popupAddPhoto.classList.remove('popup-add-photo_opened');
-}
+  popupAddPhoto.classList.remove('popup-add-photo_opened');
+};
 
 function formAddPhotoSubmitHandler(evt) {
-    evt.preventDefault();
-    initialCards.unshift({name: popupAddPhotoName.value, link: popupAddPhotoLink.value});
-    popupAddPhotoClose();
-    popupAddPhotoName.value = '';
-    popupAddPhotoLink.value = '';
+  evt.preventDefault();
+  renderCard({ name: popupAddPhotoName.value, link: popupAddPhotoLink.value });
+  popupAddPhotoClose();
+  popupAddPhotoName.value = '';
+  popupAddPhotoLink.value = '';
+};
+
+const handleDeleteCard = (evt) => {
+  evt.target.closest('.element').remove();
+};
+
+const handleLikeCard = (evt) => {
+  evt.target.classList.toggle('element__like_liked');
 }
 
+const generateCard = (cardData) => {
+  const newCard = card.cloneNode(true);
+
+  const titleCard = newCard.querySelector('.element__name');
+  titleCard.textContent = cardData.name;
+
+  const imageLink = newCard.querySelector('.element__image');
+  imageLink.src = cardData.link;
+
+  const deleteCard = newCard.querySelector('.element__thrash');
+  deleteCard.addEventListener('click', handleDeleteCard);
+
+  const likeCard = newCard.querySelector('.element__like');
+  likeCard.addEventListener('click', handleLikeCard)
+
+  return newCard;
+};
+
+const renderCard = (cardData) => {
+  cardContainer.prepend(generateCard(cardData));
+};
+
+initialCards.forEach((cardData) => {
+  renderCard(cardData);
+});
+
+
+btnProfileEdit.addEventListener('click', popupOpen);
+btnPopupClose.addEventListener('click', popupClose);
+formData.addEventListener('submit', formSubmitHandler);
 
 btnAddPhoto.addEventListener('click', popupAddPhotoOpen);
-btnPopupAddPhotoClose.addEventListener('click', popupAddPhotoClose)
+btnPopupAddPhotoClose.addEventListener('click', popupAddPhotoClose);
 formDataAddPhoto.addEventListener('submit', formAddPhotoSubmitHandler);
 
 
-console.log(initialCards);
+//console.log(initialCards);
