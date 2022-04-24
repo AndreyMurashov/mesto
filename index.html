@@ -21,16 +21,16 @@
                 <p class="profile__status">Исследователь океана</p>
                 <button type="button" class="profile__edit" aria-label="button-edit"></button>
             </div>
-            <button type="button" class="profile__add"  aria-label="button-add"></button>
+            <button type="button" class="profile__add" aria-label="button-add"></button>
         </section>
-         <section class="elements">
-           
-        </section> 
+        <section class="elements">
+
+        </section>
     </main>
 
     <template id="element">
         <div class="element">
-            <img class="element__image" src="" alt="">
+            <img class="element__image" src="#s" alt="">
             <button type="button" class="element__thrash" aria-label="button-thrash"></button>
             <div class="element__title">
                 <h2 class="element__name"></h2>
@@ -39,13 +39,13 @@
         </div>
     </template>
 
-<div class="popup-image">
-    <div class="popup-image__figure">
-            <img class="popup-image__picture" src="" alt="">
+    <div class="popup-image">
+        <div class="popup-image__figure">
+            <img class="popup-image__picture" src="#" alt="">
             <h3 class="popup-image__caption"></h3>
             <button type="button" class="popup-image__close" aria-label="Close"></button>
+        </div>
     </div>
-</div>   
 
     <footer class="footer">
         <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
@@ -56,8 +56,8 @@
         <div class="popup__container">
             <h2 class="popup__title">Редактирование профиля</h2>
             <form name="profile-edit" class="popup__form" action="#">
-                <input name="profile-name" type="text" class="popup__input" id="popup__name" value="" placeholder="Введите имя"
-                    required>
+                <input name="profile-name" type="text" class="popup__input" id="popup__name" value=""
+                    placeholder="Введите имя" required>
                 <input name="profile-status" type="text" class="popup__input" id="popup__status" value=""
                     placeholder="Введите информацию о себе" required>
                 <input type="submit" class="popup__submit" value="Сохранить">
@@ -70,15 +70,15 @@
         <div class="popup-add-photo__container">
             <h2 class="popup-add-photo__title">Новое место</h2>
             <form name="photo-add" class="popup-add-photo__form" action="#">
-                <input name="photo-name" type="text" class="popup-add-photo__input" id="photo-name" value="" placeholder="Название"
-                    required>
+                <input name="photo-name" type="text" class="popup-add-photo__input" id="photo-name" value=""
+                    placeholder="Название" required>
                 <input name="photo-link" type="text" class="popup-add-photo__input" id="photo-link" value=""
                     placeholder="Ссылка на картинку" required>
                 <input type="submit" class="popup-add-photo__submit" value="Сохранить">
             </form>
             <button type="button" class="popup-add-photo__close" aria-label="Close"></button>
         </div>
-    </div> 
+    </div>
     <script src="js/index.js"></script>
 </body>
 
