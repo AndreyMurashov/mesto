@@ -55,20 +55,20 @@ const popupImageClose = document.querySelector('.popup-image__close');
 
 
 const popupOpen = () => {
-    popup.classList.add('popup_opened');
-    popupDataName.value = profileName.textContent;
-    popupDataStatus.value = profileStatus.textContent;
+  popup.classList.add('popup_opened');
+  popupDataName.value = profileName.textContent;
+  popupDataStatus.value = profileStatus.textContent;
 };
 
 const popupClose = () => {
-    popup.classList.remove('popup_opened');
+  popup.classList.remove('popup_opened');
 };
 
 const formSubmitHandler = (evt) => {
-    evt.preventDefault();
-    profileName.textContent = popupDataName.value;
-    profileStatus.textContent = popupDataStatus.value;
-    popupClose();
+  evt.preventDefault();
+  profileName.textContent = popupDataName.value;
+  profileStatus.textContent = popupDataStatus.value;
+  popupClose();
 };
 
 const popupAddPhotoOpen = () => {
@@ -115,7 +115,7 @@ const generateCard = (cardData) => {
     popupImageCaption.textContent = titleCard.textContent;
   });
   imageLink.setAttribute('alt', cardData.name);
-  
+
   const deleteCard = newCard.querySelector('.element__thrash');
   deleteCard.addEventListener('click', handleDeleteCard);
 
@@ -141,4 +141,4 @@ btnAddPhoto.addEventListener('click', popupAddPhotoOpen);
 btnPopupAddPhotoClose.addEventListener('click', popupAddPhotoClose);
 formDataAddPhoto.addEventListener('submit', formAddPhotoSubmitHandler);
 
-popupImageClose.addEventListener('click', handlerPopupImageClose)
+popupImageClose.addEventListener('click', handlerPopupImageClose);
