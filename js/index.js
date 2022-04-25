@@ -19,8 +19,8 @@ const formDataProfile = document.querySelector('#profile-form');
 const formDataPhoto = document.querySelector('#photo-form');
 
 const popupImage = document.querySelector('#popup-image');
-const popupPicture = document.querySelector('.popup__image-picture');
-const popupImageCaption = document.querySelector('.popup__image-caption');
+const popupPicture = document.querySelector('.popup__picture');
+const popupImageCaption = document.querySelector('.popup__caption');
 const popupImageClose = document.querySelector('.popup__image-close');
 
 const btnPopupClose = document.querySelector('#popup__close');
