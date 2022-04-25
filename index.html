@@ -28,6 +28,46 @@
         </section>
     </main>
 
+    <div class="popup__image" id="popup-image">
+        <div class="popup__image-figure">
+            <img class="popup__image-picture" src="#" alt="">
+            <h3 class="popup__image-caption"></h3>
+            <button type="button" class="popup__image-close" aria-label="Close"></button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
+    </footer>
+
+    <div id="popup__profile" class="popup">
+        <div class="popup__container">
+            <h2 class="popup__title" id="profile__title">Редактирование профиля</h2>
+            <form name="profile-edit" id="profile-form" class="popup__form" action="#">
+                <input name="profile-name" type="text" class="popup__input" id="profile__name" value=""
+                    placeholder="Введите имя" required>
+                <input name="profile-status" type="text" class="popup__input" id="profile__status" value=""
+                    placeholder="Введите информацию о себе" required>
+                <input type="submit" class="popup__submit" id="popup__submit" value="Сохранить">
+            </form>
+            <button type="button" class="popup__close" id="popup__close" aria-label="Close"></button>
+        </div>
+    </div>
+
+    <div id="popup__photo" class="popup">
+        <div class="popup__container">
+            <h2 id="photo__title" class="popup__title">Новое место</h2>
+            <form name="photo-add" id="photo-form" class="popup__form" action="#">
+                <input name="photo-name" type="text" class="popup__input" id="photo-name" value=""
+                    placeholder="Название" required>
+                <input name="photo-link" type="text" class="popup__input" id="photo-link" value=""
+                    placeholder="Ссылка на картинку" required>
+                <input type="submit" class="popup__submit" id="photo__submit" value="Сохранить">
+            </form>
+            <button type="button" class="popup__close" id="photo__close" aria-label="Close"></button>
+        </div>
+    </div>
+
     <template id="element">
         <div class="element">
             <img class="element__image" src="#s" alt="">
@@ -39,46 +79,7 @@
         </div>
     </template>
 
-    <div class="popup-image">
-        <div class="popup-image__figure">
-            <img class="popup-image__picture" src="#" alt="">
-            <h3 class="popup-image__caption"></h3>
-            <button type="button" class="popup-image__close" aria-label="Close"></button>
-        </div>
-    </div>
-
-    <footer class="footer">
-        <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
-    </footer>
-
-
-    <div id="popup" class="popup">
-        <div class="popup__container">
-            <h2 class="popup__title">Редактирование профиля</h2>
-            <form name="profile-edit" class="popup__form" action="#">
-                <input name="profile-name" type="text" class="popup__input" id="popup__name" value=""
-                    placeholder="Введите имя" required>
-                <input name="profile-status" type="text" class="popup__input" id="popup__status" value=""
-                    placeholder="Введите информацию о себе" required>
-                <input type="submit" class="popup__submit" value="Сохранить">
-            </form>
-            <button type="button" class="popup__close" aria-label="Close"></button>
-        </div>
-    </div>
-
-    <div id="popup__photo" class="popup-add-photo">
-        <div class="popup-add-photo__container">
-            <h2 class="popup-add-photo__title">Новое место</h2>
-            <form name="photo-add" class="popup-add-photo__form" action="#">
-                <input name="photo-name" type="text" class="popup-add-photo__input" id="photo-name" value=""
-                    placeholder="Название" required>
-                <input name="photo-link" type="text" class="popup-add-photo__input" id="photo-link" value=""
-                    placeholder="Ссылка на картинку" required>
-                <input type="submit" class="popup-add-photo__submit" value="Сохранить">
-            </form>
-            <button type="button" class="popup-add-photo__close" aria-label="Close"></button>
-        </div>
-    </div>
+    <script src="js/cards.js"></script>
     <script src="js/index.js"></script>
 </body>
 

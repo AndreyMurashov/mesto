@@ -1,7 +1,6 @@
-.popup-image__figure {
+.popup__image-figure {
     position: relative;
     display: flex;
     justify-content: center;
-    flex-direction: column;    
+    flex-direction: column;
 }
-    
