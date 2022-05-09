@@ -1,7 +1,7 @@
 const enableValidation = (val) => {
   const showInputError = (formElement, inputElement, errorMessage) => {
     const errorElement = formElement.querySelector(
-      `.${inputElement.id}_error-text`
+      `.${inputElement.id}_error_text`
     );
     inputElement.classList.add(val.inputErrorClass);
     errorElement.textContent = errorMessage;
@@ -10,7 +10,7 @@ const enableValidation = (val) => {
 
   const hideInputError = (formElement, inputElement) => {
     const errorElement = formElement.querySelector(
-      `.${inputElement.id}_error-text`
+      `.${inputElement.id}_error_text`
     );
     inputElement.classList.remove(val.inputErrorClass);
     errorElement.classList.remove(val.errorClass);
