@@ -7,8 +7,8 @@ const popupOpenProfile = document.querySelector('#popup__profile');
 const popupTitle = document.querySelector('.popup__title');
 const profileName = document.querySelector('.profile__name');
 const profileStatus = document.querySelector('.profile__status');
-const popupDataName = document.querySelector('#profile__name');
-const popupDataStatus = document.querySelector('#profile__status');
+const popupDataName = document.querySelector('#profile-name');
+const popupDataStatus = document.querySelector('#profile-status');
 
 const popupAddPhoto = document.querySelector('#popup__photo');
 const btnAddPhoto = document.querySelector('.profile__add');
