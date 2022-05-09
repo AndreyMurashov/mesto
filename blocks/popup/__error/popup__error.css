@@ -1,4 +1,4 @@
-.popup__input_error_text {
+.popup__error {
     visibility: hidden;
     display: block;
     color: red;
@@ -13,7 +13,7 @@
 }
 
 @media screen and (max-width: 515px) {
-    .popup__input_error_text {
+    .popup__error {
         width: 238px;
         height: 22px;
     }

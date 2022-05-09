@@ -46,10 +46,10 @@
             <form name="profile-edit" id="profile-form" class="popup__form" action="#" novalidate>
                 <input name="profile-name" type="text" class="popup__input" id="profile-name" value=""
                     placeholder="Введите имя" minlength="2" maxlength="40" required>
-                    <span class="popup__input_error_text" id="profile-name_error_text"></span>
+                <span class="popup__error" id="profile-name_error_text"></span>
                 <input name="profile-status" type="text" class="popup__input" id="profile-status" value=""
                     placeholder="Введите информацию о себе" minlength="2" maxlength="200" required>
-                    <span class="popup__input_error_text" id="profile-status_error_text"></span>
+                <span class="popup__error" id="profile-status_error_text"></span>
                 <input type="submit" class="popup__submit" id="popup__submit" value="Сохранить">
             </form>
             <button type="button" class="popup__close" id="popup__close" aria-label="Close"></button>
@@ -62,10 +62,10 @@
             <form name="photo-add" id="photo-form" class="popup__form" action="#" novalidate>
                 <input name="photo-name" type="text" class="popup__input" id="photo-name" value=""
                     placeholder="Название" minlength="2" maxlength="30" required>
-                    <span class="popup__input_error_text" id="photo-name_error_text"></span>
+                <span class="popup__error" id="photo-name_error_text"></span>
                 <input name="photo-link" type="url" class="popup__input" id="photo-link" value=""
                     placeholder="Ссылка на картинку" required>
-                    <span class="popup__input_error_text" id="photo-link_error_text"></span>
+                <span class="popup__error" id="photo-link_error_text"></span>
                 <input type="submit" class="popup__submit" id="photo__submit" value="Сохранить">
             </form>
             <button type="button" class="popup__close" id="photo__close" aria-label="Close"></button>
