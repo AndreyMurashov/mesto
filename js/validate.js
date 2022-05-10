@@ -47,7 +47,7 @@ const enableValidation = (val) => {
     );
     const buttonElement = formElement.querySelector(val.submitButtonSelector);
 
-    toggleButtonState(inputList, buttonElement);
+    // toggleButtonState(inputList, buttonElement);
 
     inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
