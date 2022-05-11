@@ -27,7 +27,7 @@ const popupImageClose = document.querySelector('#popup__image-close');
 const profileCloseBtn = document.querySelector('#popup__close');
 const btnPopupAddPhotoClose = document.querySelector('#photo__close');
 const popups = document.querySelectorAll('.popup');
-const form = document.forms.photoAdd;
+const cardForm = document.forms.photoAdd;
 let closeByEscape;
 
 const handleDeleteCard = (evt) => {
@@ -85,36 +85,20 @@ const addPhotoCard = (evt) => {
     link: popupAddPhotoLink.value,
   });
   closePopup(popupAddPhoto);
-  form.reset();
+  const btnPopupSubmit = document.querySelector('#photo__submit');
+  btnPopupSubmit.classList.add('popup__submit_inactive');
+  btnPopupSubmit.setAttribute('disabled', true);
+  cardForm.reset();
 };
 
 const openPopup = (pop) => {
   pop.classList.add('popup_opened');
-  const openedPopup = document.querySelector('.popup_opened');
-
-  const btnPopupSubmit = openedPopup.querySelector('.popup__submit');
-  if (openedPopup.id !== 'popup-image') {
-    btnPopupSubmit.classList.add('popup__submit_inactive');
-    btnPopupSubmit.setAttribute('disabled', true);
-  }
-
   closeByEscape = (evt) => {
     if (evt.key == 'Escape') {
-      closePopup(openedPopup);
+      closePopup(pop);
     }
   };
   document.addEventListener('keydown', closeByEscape);
-
-  popups.forEach((popup) => {
-    popup.addEventListener('mousedown', (evt) => {
-      if (evt.target.classList.contains('popup_opened')) {
-        closePopup(popup);
-      }
-      if (evt.target.classList.contains('popup__close')) {
-        closePopup(popup);
-      }
-    });
-  });
 };
 
 const closePopup = (pop) => {
@@ -134,3 +118,14 @@ btnAddPhoto.addEventListener('click', function () {
 
 formDataPhoto.addEventListener('submit', addPhotoCard);
 formDataProfile.addEventListener('submit', saveProfile);
+
+popups.forEach((popup) => {
+  popup.addEventListener('mousedown', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+      closePopup(popup);
+    }
+    if (evt.target.classList.contains('popup__close')) {
+      closePopup(popup);
+    }
+  });
+});
