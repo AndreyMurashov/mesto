@@ -3,6 +3,7 @@ class Card {
     this._name = name;
     this._link = link;
   }
+
   _getTemplate() {
     const cardElement = document
       .querySelector('#element')
@@ -42,6 +43,7 @@ class Card {
       .addEventListener('click', () => {
         this._element.remove();
       });
+      
     this._element
       .querySelector('.element__like')
       .addEventListener('click', () => {
