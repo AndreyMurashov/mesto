@@ -18,6 +18,18 @@ const popupImageClose = document.querySelector('#popup__image-close');
 const popups = document.querySelectorAll('.popup');
 const cardForm = document.forms.photoAdd;
 let closeByEscape;
+let cardElement;
+
+const valSettings = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit',
+  inactiveButtonClass: 'popup__submit_inactive',
+  inputErrorClass: 'popup__input_error',
+  errorClass: 'popup__input_error-text-active',
+};
+
+
 
 const saveProfile = (evt) => {
   evt.preventDefault();
@@ -26,20 +38,15 @@ const saveProfile = (evt) => {
   closePopup(popupOpenProfile);
 };
 
-const addNewCard = () => {
-  const newCard = new Card(popupAddPhotoName.value, popupAddPhotoLink.value);
-  const generateNewCard = newCard.generateCard();
-  cardContainer.prepend(generateNewCard);
-};
-
 const addPhotoCard = (evt) => {
   evt.preventDefault();
-  addNewCard();
-
+  const newCardData = {name: popupAddPhotoName.value, link: popupAddPhotoLink.value };
+  createCard(newCardData);
+  cardContainer.prepend(cardElement);
   closePopup(popupAddPhoto);
-  const btnPopupSubmit = document.querySelector('#photo__submit');
-  btnPopupSubmit.classList.add('popup__submit_inactive');
-  btnPopupSubmit.setAttribute('disabled', true);
+  // const btnPopupSubmit = document.querySelector('#photo__submit');
+  // btnPopupSubmit.classList.add('popup__submit_inactive');
+  // btnPopupSubmit.setAttribute('disabled', true);
   cardForm.reset();
 };
 
@@ -62,10 +69,31 @@ btnProfileEdit.addEventListener('click', function () {
   popupDataName.value = profileName.textContent;
   popupDataStatus.value = profileStatus.textContent;
   openPopup(popupOpenProfile);
+  // запуск валидатора
+  class ProfileFormValidator extends FormValidator {
+    constructor(){
+      super(val);
+    }
+
+  }
+    
+    
+  ProfileFormValidator.enableValidation();
+
 });
 
 btnAddPhoto.addEventListener('click', function () {
   openPopup(popupAddPhoto);
+  // запуск валидатора
+  class PPhotoFormValidator extends FormValidator {
+    constructor(){
+      super(val);
+    }
+
+  }
+    
+    
+  PPhotoFormValidator.enableValidation();
 });
 
 formDataPhoto.addEventListener('submit', addPhotoCard);
@@ -82,22 +110,20 @@ popups.forEach((popup) => {
   });
 });
 
-const valSettings = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__submit',
-  inactiveButtonClass: 'popup__submit_inactive',
-  inputErrorClass: 'popup__input_error',
-  errorClass: 'popup__input_error-text-active',
-};
 
-const validator = new FormValidator(valSettings);
 
-validator.enableValidation();
+
+
+const createCard = (item) => {
+  const newCard = new Card(item, '#element');
+  cardElement = newCard.generateCard();
+  
+  return cardElement;
+}
 
 initialCards.forEach((item) => {
-  const card = new Card(item.name, item.link);
-  const cardElement = card.generateCard();
-
+  createCard(item);
   cardContainer.prepend(cardElement);
-});
+  });
+
+export { openPopup };

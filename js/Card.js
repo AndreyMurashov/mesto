@@ -1,41 +1,36 @@
+import { openPopup } from './index.js';
+
 class Card {
-  constructor(name, link) {
-    this._name = name;
-    this._link = link;
+  constructor(data, cardSelector) {
+    this._name = data.name;
+    this._link = data.link;
+    this._cardSelector = cardSelector;
+    this._popupImage = document.querySelector('#popup-image');
+    this._popupPicture = document.querySelector('.popup__picture');
+    this._popupImageCaption = document.querySelector('.popup__caption');
   }
 
   _getTemplate() {
     const cardElement = document
-      .querySelector('#element')
+      .querySelector(this._cardSelector)
       .content.querySelector('.element')
       .cloneNode(true);
 
     return cardElement;
   }
 
-  _openPopupImage(link, name) {
-    const popupImage = document.querySelector('#popup-image');
-    const popupPicture = document.querySelector('.popup__picture');
-    const popupImageCaption = document.querySelector('.popup__caption');
-    popupImage.classList.add('popup_opened');
-    popupPicture.src = this._link;
-    popupPicture.setAttribute('alt', this._name);
-    popupImageCaption.textContent = this._name;
-    document.addEventListener('keydown', (evt) => {
-      if (evt.key == 'Escape') {
-        this._closePopupImage();
-      }
-    });
-  }
-
-  _closePopupImage() {
-    const popupImage = document.querySelector('#popup-image');
-    popupImage.classList.remove('popup_opened');
+  _openPopupImage(picture) {
+    openPopup(this._popupImage);
+    this._popupPicture.src = this._link;
+    this._popupPicture.setAttribute('alt', this._name);
+    this._popupImageCaption.textContent = this._name;
+    document.addEventListener('keydown', this._openPopup);
   }
 
   generateCard() {
     this._element = this._getTemplate();
     this._element.querySelector('.element__name').textContent = this._name;
+    this._element.querySelector('.element__image').setAttribute('alt', this._name);
     this._element.querySelector('.element__image').src = this._link;
 
     this._element
@@ -55,7 +50,7 @@ class Card {
     this._element
       .querySelector('.element__image')
       .addEventListener('click', () => {
-        this._openPopupImage();
+        this._openPopupImage(this._element);
       });
 
     return this._element;
