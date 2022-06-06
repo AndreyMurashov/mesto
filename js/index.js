@@ -44,9 +44,6 @@ const addPhotoCard = (evt) => {
   createCard(newCardData);
   cardContainer.prepend(cardElement);
   closePopup(popupAddPhoto);
-  // const btnPopupSubmit = document.querySelector('#photo__submit');
-  // btnPopupSubmit.classList.add('popup__submit_inactive');
-  // btnPopupSubmit.setAttribute('disabled', true);
   cardForm.reset();
 };
 
@@ -69,31 +66,16 @@ btnProfileEdit.addEventListener('click', function () {
   popupDataName.value = profileName.textContent;
   popupDataStatus.value = profileStatus.textContent;
   openPopup(popupOpenProfile);
-  // запуск валидатора
-  class ProfileFormValidator extends FormValidator {
-    constructor(){
-      super(val);
-    }
-
-  }
-    
-    
-  ProfileFormValidator.enableValidation();
-
+  const curentForm = document.forms.profileEdit;
+  const profileFormValidator = new FormValidator(valSettings, curentForm);
+  profileFormValidator.enableValidation();
 });
 
 btnAddPhoto.addEventListener('click', function () {
   openPopup(popupAddPhoto);
-  // запуск валидатора
-  class PPhotoFormValidator extends FormValidator {
-    constructor(){
-      super(val);
-    }
-
-  }
-    
-    
-  PPhotoFormValidator.enableValidation();
+  const curentForm = document.forms.photoAdd;
+  const photoFormValidator = new FormValidator(valSettings, curentForm);    
+  photoFormValidator.enableValidation();
 });
 
 formDataPhoto.addEventListener('submit', addPhotoCard);
@@ -109,10 +91,6 @@ popups.forEach((popup) => {
     }
   });
 });
-
-
-
-
 
 const createCard = (item) => {
   const newCard = new Card(item, '#element');
