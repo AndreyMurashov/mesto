@@ -14,10 +14,8 @@ const popupAddPhotoName = document.querySelector('#photo-name');
 const popupAddPhotoLink = document.querySelector('#photo-link');
 const formDataProfile = document.querySelector('#profile-form');
 const formDataPhoto = document.querySelector('#photo-form');
-const popupImageClose = document.querySelector('#popup__image-close');
 const popups = document.querySelectorAll('.popup');
 const cardForm = document.forms.photoAdd;
-let closeByEscape;
 let cardElement;
 
 const valSettings = {
@@ -29,8 +27,6 @@ const valSettings = {
   errorClass: 'popup__input_error-text-active',
 };
 
-
-
 const saveProfile = (evt) => {
   evt.preventDefault();
   profileName.textContent = popupDataName.value;
@@ -40,7 +36,10 @@ const saveProfile = (evt) => {
 
 const addPhotoCard = (evt) => {
   evt.preventDefault();
-  const newCardData = {name: popupAddPhotoName.value, link: popupAddPhotoLink.value };
+  const newCardData = {
+    name: popupAddPhotoName.value,
+    link: popupAddPhotoLink.value,
+  };
   createCard(newCardData);
   cardContainer.prepend(cardElement);
   closePopup(popupAddPhoto);
@@ -49,12 +48,14 @@ const addPhotoCard = (evt) => {
 
 const openPopup = (pop) => {
   pop.classList.add('popup_opened');
-  closeByEscape = (evt) => {
-    if (evt.key == 'Escape') {
-      closePopup(pop);
-    }
-  };
   document.addEventListener('keydown', closeByEscape);
+};
+
+const closeByEscape = (evt) => {
+  const openedPopup = document.querySelector('.popup_opened');
+  if (evt.key == 'Escape' && openedPopup) {
+    closePopup(openedPopup);
+  }
 };
 
 const closePopup = (pop) => {
@@ -62,20 +63,30 @@ const closePopup = (pop) => {
   document.removeEventListener('keydown', closeByEscape);
 };
 
+const createProfileFormValidator = () => {
+  const curentForm = document.forms.profileEdit;
+  const profileValidator = new FormValidator(valSettings, curentForm);
+  profileValidator.enableValidation();
+};
+
+createProfileFormValidator();
+
+const createPhotoFormValidator = () => {
+  const curentForm = document.forms.photoAdd;
+  const photoValidator = new FormValidator(valSettings, curentForm);
+  photoValidator.enableValidation();
+};
+
+createPhotoFormValidator();
+
 btnProfileEdit.addEventListener('click', function () {
   popupDataName.value = profileName.textContent;
   popupDataStatus.value = profileStatus.textContent;
   openPopup(popupOpenProfile);
-  const curentForm = document.forms.profileEdit;
-  const profileFormValidator = new FormValidator(valSettings, curentForm);
-  profileFormValidator.enableValidation();
 });
 
 btnAddPhoto.addEventListener('click', function () {
   openPopup(popupAddPhoto);
-  const curentForm = document.forms.photoAdd;
-  const photoFormValidator = new FormValidator(valSettings, curentForm);    
-  photoFormValidator.enableValidation();
 });
 
 formDataPhoto.addEventListener('submit', addPhotoCard);
@@ -95,13 +106,13 @@ popups.forEach((popup) => {
 const createCard = (item) => {
   const newCard = new Card(item, '#element');
   cardElement = newCard.generateCard();
-  
+
   return cardElement;
-}
+};
 
 initialCards.forEach((item) => {
   createCard(item);
   cardContainer.prepend(cardElement);
-  });
+});
 
 export { openPopup };

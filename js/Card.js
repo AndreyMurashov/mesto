@@ -8,6 +8,12 @@ class Card {
     this._popupImage = document.querySelector('#popup-image');
     this._popupPicture = document.querySelector('.popup__picture');
     this._popupImageCaption = document.querySelector('.popup__caption');
+
+    this._element = this._getTemplate();
+    this._elementName = this._element.querySelector('.element__name');
+    this._elementImage = this._element.querySelector('.element__image');
+    this._elementLike = this._element.querySelector('.element__like');
+    this._elementThrash = this._element.querySelector('.element__thrash');
   }
 
   _getTemplate() {
@@ -19,39 +25,29 @@ class Card {
     return cardElement;
   }
 
-  _openPopupImage(picture) {
+  _openPopupImage() {
     openPopup(this._popupImage);
     this._popupPicture.src = this._link;
     this._popupPicture.setAttribute('alt', this._name);
     this._popupImageCaption.textContent = this._name;
-    document.addEventListener('keydown', this._openPopup);
   }
 
   generateCard() {
-    this._element = this._getTemplate();
-    this._element.querySelector('.element__name').textContent = this._name;
-    this._element.querySelector('.element__image').setAttribute('alt', this._name);
-    this._element.querySelector('.element__image').src = this._link;
+    this._elementName.textContent = this._name;
+    this._elementImage.setAttribute('alt', this._name);
+    this._elementImage.src = this._link;
 
-    this._element
-      .querySelector('.element__thrash')
-      .addEventListener('click', () => {
-        this._element.remove();
-      });
-      
-    this._element
-      .querySelector('.element__like')
-      .addEventListener('click', () => {
-        this._element
-          .querySelector('.element__like')
-          .classList.toggle('element__like_liked');
-      });
+    this._elementThrash.addEventListener('click', () => {
+      this._element.remove();
+    });
 
-    this._element
-      .querySelector('.element__image')
-      .addEventListener('click', () => {
-        this._openPopupImage(this._element);
-      });
+    this._elementLike.addEventListener('click', () => {
+      this._elementLike.classList.toggle('element__like_liked');
+    });
+
+    this._elementImage.addEventListener('click', () => {
+      this._openPopupImage(this._element);
+    });
 
     return this._element;
   }
