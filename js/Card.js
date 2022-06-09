@@ -32,11 +32,7 @@ class Card {
     this._popupImageCaption.textContent = this._name;
   }
 
-  generateCard() {
-    this._elementName.textContent = this._name;
-    this._elementImage.setAttribute('alt', this._name);
-    this._elementImage.src = this._link;
-
+  _setEventListeners() {
     this._elementThrash.addEventListener('click', () => {
       this._element.remove();
     });
@@ -48,6 +44,14 @@ class Card {
     this._elementImage.addEventListener('click', () => {
       this._openPopupImage(this._element);
     });
+  }
+
+  generateCard() {
+    this._elementName.textContent = this._name;
+    this._elementImage.setAttribute('alt', this._name);
+    this._elementImage.src = this._link;
+    
+    this._setEventListeners();
 
     return this._element;
   }

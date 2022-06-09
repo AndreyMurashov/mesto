@@ -15,7 +15,8 @@ const popupAddPhotoLink = document.querySelector('#photo-link');
 const formDataProfile = document.querySelector('#profile-form');
 const formDataPhoto = document.querySelector('#photo-form');
 const popups = document.querySelectorAll('.popup');
-const cardForm = document.forms.photoAdd;
+const photoForm = document.forms.photoAdd;
+const profileForm = document.forms.profileEdit;
 let cardElement;
 
 const valSettings = {
@@ -43,8 +44,13 @@ const addPhotoCard = (evt) => {
   createCard(newCardData);
   cardContainer.prepend(cardElement);
   closePopup(popupAddPhoto);
-  cardForm.reset();
 };
+
+const profileValidator = new FormValidator(valSettings, profileForm);
+profileValidator.enableValidation();
+
+const photoValidator = new FormValidator(valSettings, photoForm);
+photoValidator.enableValidation();
 
 const openPopup = (pop) => {
   pop.classList.add('popup_opened');
@@ -52,8 +58,8 @@ const openPopup = (pop) => {
 };
 
 const closeByEscape = (evt) => {
-  const openedPopup = document.querySelector('.popup_opened');
-  if (evt.key == 'Escape' && openedPopup) {
+  if (evt.key == 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
     closePopup(openedPopup);
   }
 };
@@ -63,30 +69,17 @@ const closePopup = (pop) => {
   document.removeEventListener('keydown', closeByEscape);
 };
 
-const createProfileFormValidator = () => {
-  const curentForm = document.forms.profileEdit;
-  const profileValidator = new FormValidator(valSettings, curentForm);
-  profileValidator.enableValidation();
-};
-
-createProfileFormValidator();
-
-const createPhotoFormValidator = () => {
-  const curentForm = document.forms.photoAdd;
-  const photoValidator = new FormValidator(valSettings, curentForm);
-  photoValidator.enableValidation();
-};
-
-createPhotoFormValidator();
-
 btnProfileEdit.addEventListener('click', function () {
   popupDataName.value = profileName.textContent;
   popupDataStatus.value = profileStatus.textContent;
   openPopup(popupOpenProfile);
+  profileValidator.resetValidation();
 });
 
 btnAddPhoto.addEventListener('click', function () {
   openPopup(popupAddPhoto);
+  photoForm.reset();
+  photoValidator.resetValidation();
 });
 
 formDataPhoto.addEventListener('submit', addPhotoCard);
