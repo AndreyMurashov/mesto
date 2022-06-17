@@ -10,7 +10,6 @@ open() {
 }
 
 close() {
-  // const openedPopup = document.querySelector('.popup_opened');
   this._popupSelector.classList.remove('popup_opened');
   document.removeEventListener('keydown', this._closeByEscape);
 }

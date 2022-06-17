@@ -93,9 +93,15 @@ const cardsList = new Section({
   },
 }, '.elements');
 cardsList.renderItems();
+
+
 /* Попап просмотра изображения */
 const viewImagePopup = new PopupWithImage('.popup_type_image');
 viewImagePopup.setEventListeners();
+
+
+
+
 /* Валидация форм */
 // валидация формы редактирования профиля
 const formEditProfileValidator = new FormValidator(config, formEditProfile);

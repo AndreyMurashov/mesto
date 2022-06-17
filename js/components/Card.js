@@ -1,14 +1,14 @@
 // import { openPopup } from '../pages/index.js';
 
 class Card {
-  constructor(data, cardSelector) {
+  constructor({ data, handleCardClick }, cardSelector) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
     this._popupImage = document.querySelector('#popup-image');
     this._popupPicture = document.querySelector('.popup__picture');
     this._popupImageCaption = document.querySelector('.popup__caption');
-
+    this._handleCardClick = handleCardClick;
     this._element = this._getTemplate();
     this._elementName = this._element.querySelector('.element__name');
     this._elementImage = this._element.querySelector('.element__image');

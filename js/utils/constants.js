@@ -26,8 +26,11 @@ export const initialCards = [
 ];
 
 export const cardContainer = document.querySelector('.elements');
+export const element = document.querySelector('.element');
+export const elementImage = document.querySelector('.element__image');
 export const btnProfileEdit = document.querySelector('.profile__edit');
 export const popupOpenProfile = document.querySelector('#popup__profile');
+export const popupImage = document.querySelector('#popup-image');
 export const profileName = document.querySelector('.profile__name');
 export const profileStatus = document.querySelector('.profile__status');
 export const popupDataName = document.querySelector('#profile-name');
@@ -50,3 +53,8 @@ export const valSettings = {
   inputErrorClass: 'popup__input_error',
   errorClass: 'popup__input_error-text-active',
 };
+
+export const currentFormData = {
+  name: profileName.textContent,
+  status: profileStatus.textContent
+  }
