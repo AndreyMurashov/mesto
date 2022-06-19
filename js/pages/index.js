@@ -1,163 +1,110 @@
 // // // Импорты // // //
-import { Card } from '../components/Card.js';
-import { FormValidator } from '../components/FormValidator.js';
+import '../../pages/index.css';
+
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import {
   initialCards,
-  cardContainer,
-  element,
   btnProfileEdit,
-  popupOpenProfile,
-  profileName,
-  profileStatus,
-  popupDataName,
-  popupDataStatus,
-  popupImage,
-  popupAddPhoto,
   btnAddPhoto,
-  popupAddPhotoName,
-  popupAddPhotoLink,
-  elementImage,
-  formDataProfile,
-  formDataPhoto,
-  popups,
-  photoForm,
   profileForm,
-  valSettings,  
-  currentFormData
+  photoForm,
+  nameInput,
+  statusInput,
+  valSettings,
 } from '../utils/constants.js';
-let cardElement;
 
 // // // Объявления классов // // //
-// // Карточки с изображениями  // //
-// Класс Card //
+// // Галерея  // //
 const createCard = (data) => {
-  const newCard = new Card({data: data, handleCardClick: (name, link) => { openPopupImage.open(name, link)}}, '#element');
-  cardElement = newCard.generateCard();
-
+  const card = new Card(
+    {
+      data: data,
+      handleCardClick: (photoName, photoLink) => {
+        openPopupImage.open(photoName, photoLink);
+      },
+    },
+    '#element'
+  );
+  const cardElement = card.generateCard();
   return cardElement;
 };
 
-// Класс Section //
-const cardsList = new Section({ item: initialCards, renderer: (item) => { cardsList.addItem(createCard(item)); }}, '.elements');
-
+const cardsList = new Section(
+  {
+    items: initialCards,
+    renderer: (item) => {
+      cardsList.addItem(createCard(item));
+    },
+  },
+  '.elements'
+);
 
 // // // Попапы // // //
 // // Попап редактирования профиля // //
-const userData = new UserInfo({ name: '.profile__name', status: '.profile__status' });
-const editProfilePopup = new PopupWithForm('#popup__profile', currentFormData);
+const userInfo = new UserInfo({
+  name: '.profile__name',
+  status: '.profile__status',
+});
+
+const redUserProfile = new PopupWithForm({
+  popupSelector: '#popup__profile',
+  handleFormSubmit: (dataForm) => {
+    userInfo.setUserInfo({
+      name: dataForm.profileName,
+      status: dataForm.profileStatus,
+    });
+
+    redUserProfile.close();
+  },
+});
 
 // // Попап добавления фото // //
-const addPhotoCard = (evt) => {
-  evt.preventDefault();
-  const newCardData = {
-    name: popupAddPhotoName.value,
-    link: popupAddPhotoLink.value,
-  };
-  createCard(newCardData);
-  cardContainer.prepend(cardElement);
-  closePopup(popupAddPhoto);
-};
+const openCardPopup = new PopupWithForm({
+  popupSelector: '#popup__photo',
+  handleFormSubmit: (formData) => {
+    cardsList.addItem(createCard(formData));
+    openCardPopup.close();
+  },
+});
 
-
-// // // Попап открытия карточки // // //
-const openPopupImage = new PopupWithImage ();
-
+// // Попап открытия карточки // //
+const openPopupImage = new PopupWithImage('#popup-image');
 
 // Валидация //
 const profileValidator = new FormValidator(valSettings, profileForm);
 const photoValidator = new FormValidator(valSettings, photoForm);
 
-
 // // // Вызовы // // //
-cardsList.renderItems(); // генерация карточек 
-editProfilePopup.setEventListeners(popupOpenProfile); // редактирование профиля
-openPopupImage.setEventListeners(popupImage); // открытие карточки
-formDataPhoto.addEventListener('submit', addPhotoCard); //добавление карточки
+cardsList.renderItems();
+redUserProfile.setEventListeners();
+openCardPopup.setEventListeners();
+openPopupImage.setEventListeners();
 profileValidator.enableValidation();
-profileValidator.resetValidation();
 photoValidator.enableValidation();
+profileValidator.resetValidation();
 photoValidator.resetValidation();
 
-
 // // // Слушатели // // //
-btnProfileEdit.addEventListener('click', function () {
-  const infoAboutUser = userData.getUserInfo();
-  popupDataName.value = infoAboutUser.name;
-  popupDataStatus.value = infoAboutUser.status;
-  editProfilePopup.open();
+const profileData = ({ name, status }) => {
+  nameInput.value = name;
+  statusInput.value = status;
+};
+
+btnProfileEdit.addEventListener('click', () => {
+  const info = userInfo.getUserInfo();
+  profileData({
+    name: info.name,
+    status: info.status,
+  });
+  redUserProfile.open('#popup__profile');
 });
 
-btnAddPhoto.addEventListener('click', function () {
-  const addPhotoPopup = new PopupWithForm('#popup__photo');
-  addPhotoPopup.open();
-  addPhotoPopup.setEventListeners(popupAddPhoto);
- 
-  // openPopup(popupAddPhoto);
-  // photoForm.reset();
-  
+btnAddPhoto.addEventListener('click', () => {
+  photoValidator.toggleButtonState();
+  openCardPopup.open();
 });
-
-// Попапы общее //
-
-// const openPopup = (pop) => {
-//   pop.classList.add('popup_opened');
-//   document.addEventListener('keydown', closeByEscape);
-// };
-
-// const closeByEscape = (evt) => {
-//   if (evt.key == 'Escape') {
-//     const openedPopup = document.querySelector('.popup_opened');
-//     closePopup(openedPopup);
-//   }
-// };
-
-// const closePopup = (pop) => {
-//   pop.classList.remove('popup_opened');
-//   document.removeEventListener('keydown', closeByEscape);
-// };
-
-// popups.forEach((popup) => {
-//   popup.addEventListener('mousedown', (evt) => {
-//     if (evt.target.classList.contains('popup_opened')) {
-//       closePopup(popup);
-//     }
-//     if (evt.target.classList.contains('popup__close')) {
-//       closePopup(popup);
-//     }
-//   });
-// });
-
-
-// Попап редактирования профиля //
-// const saveProfile = (evt) => {
-//   evt.preventDefault();
-//   profileName.textContent = popupDataName.value;
-//   profileStatus.textContent = popupDataStatus.value;
-//   closePopup(popupOpenProfile);
-// };
-
-
-
-//formDataProfile.addEventListener('submit', saveProfile);
-
-
-// Попап открытия карточки //
-
-// elementImage.addEventListener('click', () => {
-//   this._openPopupImage(this._element);
-// });
-
-
-
-
-
-// Попап добавления карточки //
-
-
-
-
-// export { openPopup };

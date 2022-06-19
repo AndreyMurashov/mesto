@@ -7,10 +7,12 @@ class FormValidator {
     this._inputErrorClass = val.inputErrorClass;
     this._errorClass = val.errorClass;
     this._curentForm = curentForm;
+    this._buttonElement = this._curentForm.querySelector(
+      this._submitButtonSelector
+    );
     this._inputList = Array.from(
       this._curentForm.querySelectorAll(this._inputSelector)
     );
-    this._buttonElement = this._curentForm.querySelector(this._submitButtonSelector);
   }
 
   _showInputError(inputElement, errorMessage) {
@@ -31,8 +33,8 @@ class FormValidator {
     errorElement.textContent = '';
   }
 
-  _toggleButtonState(inputList) {
-    if (this._hasInvalidInput(inputList)) {
+  toggleButtonState() {
+    if (this._hasInvalidInput()) {
       this._buttonElement.classList.add(this._inactiveButtonClass);
       this._buttonElement.setAttribute('disabled', true);
     } else {
@@ -49,40 +51,37 @@ class FormValidator {
 
   _isValid(inputElement) {
     if (!inputElement.validity.valid) {
-      this._showInputError(
-        inputElement,
-        inputElement.validationMessage
-      );
+      this._showInputError(inputElement, inputElement.validationMessage);
     } else {
       this._hideInputError(inputElement);
     }
   }
 
   _setEventListeners() {
-    this._toggleButtonState(this._inputList);
+    this.toggleButtonState(this._inputList);
 
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._isValid(inputElement);
-        this._toggleButtonState(this._inputList);
+        this.toggleButtonState(this._inputList);
       });
     });
   }
 
   resetValidation() {
-    this._toggleButtonState(this._inputList); 
+    this.toggleButtonState(this._inputList);
     this._inputList.forEach((inputElement) => {
-      this._hideInputError(inputElement); 
+      this._hideInputError(inputElement);
     });
   }
 
   enableValidation() {
-      this._curentForm.addEventListener('submit', (evt) => {
-        evt.preventDefault();
-      });
+    this._curentForm.addEventListener('submit', (evt) => {
+      evt.preventDefault();
+    });
 
-      this._setEventListeners();
+    this._setEventListeners();
   }
 }
 
-export { FormValidator };
+export default FormValidator;
