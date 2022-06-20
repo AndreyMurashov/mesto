@@ -1,12 +1,12 @@
 // // // Импорты // // //
-import '../../pages/index.css';
+import './index.css';
 
-import Card from '../components/Card.js';
-import FormValidator from '../components/FormValidator.js';
-import PopupWithForm from '../components/PopupWithForm.js';
-import PopupWithImage from '../components/PopupWithImage.js';
-import Section from '../components/Section.js';
-import UserInfo from '../components/UserInfo.js';
+import Card from '../js/components/Card.js';
+import FormValidator from '../js/components/FormValidator.js';
+import PopupWithForm from '../js/components/PopupWithForm.js';
+import PopupWithImage from '../js/components/PopupWithImage.js';
+import Section from '../js/components/Section.js';
+import UserInfo from '../js/components/UserInfo.js';
 import {
   initialCards,
   btnProfileEdit,
@@ -16,7 +16,7 @@ import {
   nameInput,
   statusInput,
   valSettings,
-} from '../utils/constants.js';
+} from '../js/utils/constants.js';
 
 // // // Объявления классов // // //
 // // Галерея  // //
@@ -64,11 +64,11 @@ const redUserProfile = new PopupWithForm({
 });
 
 // // Попап добавления фото // //
-const openCardPopup = new PopupWithForm({
+const cardElement = new PopupWithForm({
   popupSelector: '#popup__photo',
   handleFormSubmit: (formData) => {
     cardsList.addItem(createCard(formData));
-    openCardPopup.close();
+    cardElement.close();
   },
 });
 
@@ -82,12 +82,11 @@ const photoValidator = new FormValidator(valSettings, photoForm);
 // // // Вызовы // // //
 cardsList.renderItems();
 redUserProfile.setEventListeners();
-openCardPopup.setEventListeners();
+cardElement.setEventListeners();
 openPopupImage.setEventListeners();
 profileValidator.enableValidation();
 photoValidator.enableValidation();
-profileValidator.resetValidation();
-photoValidator.resetValidation();
+
 
 // // // Слушатели // // //
 const profileData = ({ name, status }) => {
@@ -102,9 +101,10 @@ btnProfileEdit.addEventListener('click', () => {
     status: info.status,
   });
   redUserProfile.open('#popup__profile');
+  profileValidator.resetValidation();
 });
 
 btnAddPhoto.addEventListener('click', () => {
-  photoValidator.toggleButtonState();
-  openCardPopup.open();
+  photoValidator.resetValidation();
+  cardElement.open();
 });

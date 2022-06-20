@@ -3,9 +3,6 @@ class Card {
      this._name = data.photoName;
      this._link = data.photoLink;
      this._cardSelector = cardSelector;
-     this._popupImage = document.querySelector('#popup-image');
-     this._popupPicture = document.querySelector('.popup__picture');
-     this._popupImageCaption = document.querySelector('.popup__caption');
      this._handleCardClick = handleCardClick;
      this._element = this._getTemplate();
      this._elementName = this._element.querySelector('.element__name');
@@ -24,14 +21,18 @@ _getTemplate() {
   return cardElement;
 }
 
-_setEventListeners() {
-    this._elementThrash.addEventListener('click', () => {
-      this._element.remove();
-    });
+_removeElement() {
+  this._element.remove();
+}
 
-    this._elementLike.addEventListener('click', () => {
-      this._elementLike.classList.toggle('element__like_liked');
-    });
+_likeElement() {
+  this._elementLike.classList.toggle('element__like_liked');
+}
+
+_setEventListeners() {
+    this._elementThrash.addEventListener('click', () => {this._removeElement()});
+
+    this._elementLike.addEventListener('click', () => {this._likeElement()});
 
   this._elementImage.addEventListener('click', () => {
     this._handleCardClick(this._name, this._link);
