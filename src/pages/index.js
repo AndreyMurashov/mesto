@@ -10,7 +10,6 @@ import UserInfo from '../js/components/UserInfo.js';
 import Api from '../js/components/Api.js';
 import ConfirmOfRemoveCard from '../js/components/ConfirmOfRemoveCard.js';
 import {
-  //initialCards,
   btnProfileEdit,
   btnAddPhoto,
   profileForm,
