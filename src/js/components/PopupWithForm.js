@@ -21,9 +21,9 @@ class PopupWithForm extends Popup {
 
   loading(isLoading) {
     if (isLoading) {
-      this._btnSubmit.textContent = 'Сохранение...'
+      this._btnSubmit.value = 'Сохранение...'
     } else {
-      this._btnSubmit.textContent = this._text;
+      this._btnSubmit.value = 'Сохранить';
     }
   }
 
