@@ -9,6 +9,7 @@
     background-repeat: no-repeat;
     background-position: center;
     transition: opacity .5s;
+    cursor: pointer;
 }
 
 .profile__avatar-btn:hover {
