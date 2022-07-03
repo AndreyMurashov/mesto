@@ -159,7 +159,7 @@ const changeAvatar = new PopupWithForm({
     api
       .redAvatar(data)
       .then((data) => {
-        avatarPicture.src = data.avatar;
+        userInfo.setUserInfo(data);
         changeAvatar.close();
       })
       .catch((err) => {
@@ -192,14 +192,14 @@ photoValidator.enableValidation();
 avatarValidator.enableValidation();
 
 // // // Слушатели // // //
-function profileData({ username, status }) {
+const setProfileData = ({ username, status }) => {
   nameInput.value = username;
   statusInput.value = status;
 }
 
 btnProfileEdit.addEventListener('click', () => {
   const info = userInfo.getUserInfo();
-  profileData({
+  setProfileData({
     username: info.username,
     status: info.status,
   });
